@@ -8,8 +8,12 @@ function onInit(){
 
 
 function renderBooks(renderBy){
-
-    const books = (renderBy)? loadFromStorage('searchBooks') :  loadFromStorage('books')
+    if(!loadFromStorage('books')){
+        console.log('in:', 'in')
+        var books = getBooksList()
+    }else{
+        var books = (renderBy)? loadFromStorage('searchBooks') :  loadFromStorage('books')
+    }
     const strHTMLs = books.map(book => `
 
     <tr>
