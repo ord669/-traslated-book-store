@@ -41,11 +41,13 @@ function renderBooks(renderBy,viewRender){
     renderCards()
     function renderCards() {
         var strHtmls = books.map(book => `
-            <article class="car-preview">
-                <button onclick="onRemoveBook('${book.id}')" class="btn-remove" value="delete" data-trans="delete-book">X</button>
-                <h5>${book.name}</h5>
-                <td><button onclick="onReadBook('${book.id}')" class="btn btn-outline-secondary read" value="read" data-trans="read-book">${getTrans('read-book')}</button></td>
-                <td><button onclick="onUpdateBook('${book.id}')" class="btn btn-outline-warning update" value="update"  data-trans="update-book"> ${getTrans('update-book')}</button></td>
+            <article class="cards-preview">
+            <h5>${book.name}</h5>
+            <h5>price : ${book.price}</h5>
+            
+            <button onclick="onRemoveBook('${book.id}')" class="btn btn-outline-danger btn-remove" value="delete" data-trans="delete-book">Delete</button>
+            <button onclick="onReadBook('${book.id}')" class="btn btn-outline-secondary read" value="read" data-trans="read-book">${getTrans('read-book')}</button>
+            <button onclick="onUpdateBook('${book.id}')" class="btn btn-outline-warning update" value="update"  data-trans="update-book"> ${getTrans('update-book')}</button>
                 <img onerror="this.src='img/fiat.png'" src="img/Harry_Potter_character_poster.jpg" >
 
             </article> 
