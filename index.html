@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="bootstrap/bootstrap.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <title>Book Store</title>
+</head>
+
+<body onload="onInit()">
+    <div class="continer">
+        <h1 data-trans="title" class="display-1">Welcome to my book shop</h1>
+        <select class="options" onchange="onSetLang(this.value)">
+            <option value="en">English</option>
+            <option value="he">עברית</option>
+        </select>
+
+
+
+        <section class=" todo-filter">
+            <select class="options" onchange="onSetFilter(this.value)">
+                <option data-trans="filter-max" value="max">maxPrice</option>
+                <option data-trans="filter-min" value="min">minRate</option>
+            </select>
+        </section>
+
+
+
+
+        <form class="options flexo" onsubmit="onSearchBox(event)">
+            <input class="options" type="text" name="search-book" placeholder="What book you want?" />
+            <button class="btn-primary search-btn rounded" data-trans="search-btn">Search</button>
+        </form>
+
+
+        <div class="table-responsive-lg  table-show">
+
+            <table class="table table-borderless  table-hover table-dark table-books">
+                <thead>
+                    <th class="col text-center" data-trans="book-id">id</th>
+                    <th class="col text-center" data-trans="book-name">name</th>
+                    <th class="col text-center" data-trans="book-price">price</th>
+                    <th class="col text-center" data-trans="book-img">imgUrl</th>
+                    <th class="col  text-center" colspan="3" data-trans="book-actions">actions</th>
+
+                    </th>
+                </thead>
+                <tbody>
+                </tbody>
+                <div class="table-books"></div>
+            </table>
+        </div>
+        <button class="btn-primary rounded" onclick="onAddBook()" value="add" data-trans="add-new-book">Add new
+            book</button>
+    </div>
+    <div class="book-modal display-none">
+
+    </div>
+
+
+
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/util.service.js"></script>
+    <script src="js/services/book.service.js"></script>
+    <script src="js/book.controller.js"></script>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="bootstrap/bootstrap.bundel.js"></script>
+
+</body>
+
+</html>

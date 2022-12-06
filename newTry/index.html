@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Book Store</title>
+</head>
+
+<body onload="onInit()">
+    <div class="continer">
+        <h1>Welcome to my book shop</h1>
+
+
+        <section class="main-actions">
+            <div class="search-add">
+                <form onsubmit="onSearchBook(event)">
+                    <input type="text" name="search-book" placeholder="Search a book" />
+                    <button>Search</button>
+                </form>
+                <button onclick="onAddBook()">Add book</button> 
+            </div>
+            <label>
+                Max Price:
+                <input type="range" min="0" max="30" value="0" class="filter-price-range"
+                    onchange="this.title=this.value;onSetFilterBy({maxPrice: this.value})" />
+            </label>
+            <label>
+                Min Rate:
+                <input type="range" min="0" max="9" value="0" class="filter-rate-range"
+                    onchange="this.title=this.value;onSetFilterBy({minRate: this.value})" />
+            </label>
+        </section>
+
+
+
+
+
+<!-- 
+        <form onsubmit="onSearchBox(event)">
+            <input type="text" name="search-book" placeholder="What book you want?" />
+            <button>Search</button>
+        </form> -->
+<!-- 
+
+        <section class="todo-filter">
+            <select onchange="onSetFilter(this.value)">
+                <option value="max">maxPrice,</option>
+                <option value="min">minRate</option>
+            </select>
+        </section> -->
+        
+        <table class="table-books">
+            <thead>
+                <th>id</td>
+                <th>name</td>
+                <th>price</td>
+                <th>imgUrl</td>
+                <th>actions</td>
+                </th>
+            </thead>
+            <tbody>
+            </tbody>
+            <button onclick="onAddBook()" value="add" >Add new book</button>
+            <div class="table-books"></div>
+        </table>
+    </div>
+    <div class="modal display-none">
+    </div>
+
+
+
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/util.service.js"></script>
+    <script src="js/services/service.js"></script>
+    <script src="js/controller.js"></script>
+
+
+</body>
+
+</html>
