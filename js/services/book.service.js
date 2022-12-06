@@ -60,6 +60,14 @@ var gTrans = {
     'rate-book': {
         en: 'Rate',
         he: 'דרג ',
+    },
+    'list-view': {
+        en: 'List',
+        he: 'רשימה ',
+    },
+    'cards-view': {
+        en: 'Cards',
+        he: 'כרטיסיות ',
     }
 }
 

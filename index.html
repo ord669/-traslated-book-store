@@ -16,6 +16,14 @@
 <body onload="onInit()">
     <div class="continer">
         <h1 data-trans="title" class="display-1">Welcome to my book shop</h1>
+        <br>
+        <br>
+        <section class="view-filter">
+            <button class="btn-primary rounded" onclick="onTogleView('list')"  data-trans="list-view">list</button>
+            <button class="btn-primary rounded" onclick="onTogleView('cards')"  data-trans="cards-view">cards</button>
+        </section>
+
+
         <select class="options" onchange="onSetLang(this.value)">
             <option value="en">English</option>
             <option value="he">עברית</option>
@@ -38,8 +46,11 @@
             <button class="btn-primary search-btn rounded" data-trans="search-btn">Search</button>
         </form>
 
+        <section class="books-card-container" hidden>
 
-        <div class="table-responsive-lg  table-show">
+        </section>
+        
+        <div class="table-responsive-lg  table-show table-view">
 
             <table class="table table-borderless  table-hover table-dark table-books">
                 <thead>
@@ -49,7 +60,6 @@
                     <th class="col text-center" data-trans="book-img">imgUrl</th>
                     <th class="col  text-center" colspan="3" data-trans="book-actions">actions</th>
 
-                    </th>
                 </thead>
                 <tbody>
                 </tbody>

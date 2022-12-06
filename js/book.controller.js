@@ -7,14 +7,15 @@ function onInit(){
 }
 
 
-function renderBooks(renderBy){
+function renderBooks(renderBy,viewRender){
     if(!loadFromStorage('books')){
         console.log('in:', 'in')
         var books = getBooksList()
     }else{
         var books = (renderBy)? loadFromStorage('searchBooks') :  loadFromStorage('books')
     }
-    const strHTMLs = books.map(book => `
+    
+    var strHTMLs = books.map(book => `
 
     <tr>
     <td class="text-center"> ${book.id}</td>
@@ -34,6 +35,28 @@ function renderBooks(renderBy){
 
 
     document.querySelector('tbody').innerHTML = strHTMLs.join('')
+
+
+
+    renderCards()
+    function renderCards() {
+        var strHtmls = books.map(book => `
+            <article class="car-preview">
+                <button onclick="onRemoveBook('${book.id}')" class="btn-remove" value="delete" data-trans="delete-book">X</button>
+                <h5>${book.name}</h5>
+                <td><button onclick="onReadBook('${book.id}')" class="btn btn-outline-secondary read" value="read" data-trans="read-book">${getTrans('read-book')}</button></td>
+                <td><button onclick="onUpdateBook('${book.id}')" class="btn btn-outline-warning update" value="update"  data-trans="update-book"> ${getTrans('update-book')}</button></td>
+                <img onerror="this.src='img/fiat.png'" src="img/Harry_Potter_character_poster.jpg" >
+
+            </article> 
+            `
+        )
+        document.querySelector('.books-card-container').innerHTML = strHtmls.join('')
+    }
+    
+
+
+
 
 }
 
@@ -83,6 +106,7 @@ function openModal(bookId){
 function addDetailsModal(book){
     const elModal = document.querySelector('.book-modal')
     const strHTML = `
+    <div class="modal-container">
     <h3>${book.name}</h3>
     <h4>${book.price}</h4>
     <h5>${book.imgUrl}</h5>
@@ -90,9 +114,10 @@ function addDetailsModal(book){
     <button onclick="onRateBook(this.value,'${book.id}')" value=-1 >-</button>
     <span class="rate-text">0</span>
     <button onclick="onRateBook(this.value,'${book.id}')" value=1 >+</button>
-
+    
     </div>
-
+    <button onclick="onCloseModal(this.value,'${book.id}')" >close</button>
+    
     `
     elModal.innerHTML = strHTML
 
@@ -158,4 +183,35 @@ function onSetLang(lang) {
 
     doTrans()
     renderBooks()
+}
+
+
+
+function onCloseModal(){
+    const elModal = document.querySelector('.book-modal')
+    elModal.classList.add('display-none')
+    renderBookRate(bookToRateIdx)
+}
+
+
+function onTogleView(viewFilterBy){
+    const elTable = document.querySelector('.table-view')
+    const elCards = document.querySelector('.books-card-container')
+    if(viewFilterBy === 'cards'){
+        elCards.hidden = false
+        elTable.hidden = true
+    }else{
+        elCards.hidden = true
+        elTable.hidden = false 
+    }
+    
+    // console.log(':',elTable )
+
+    // elTable.hidden = !elTable.hidden 
+
+   
+    // elCards.hidden = !elCards.hidden 
+
+    // // elTable.hidden = true
+    // // $elTable.hide()
 }
